@@ -27,11 +27,11 @@
 
 (deftest "using %n and %&"
     (#[values % %3 %&] 1 2 3 4 5)
-  1 3 (1 2 3 4 5))
+  1 3 (4 5))
 
 (deftest "many arguments"
-   (apply #[values (length %&) %100] (loop repeat 100 collect 100))
-  100 100)
+   (apply #[values %100] (loop repeat 100 collect 100))
+  100)
 
 (deftest "error: too match arguments"
     (handler-case (#[+ % %2] 1 2 3)
